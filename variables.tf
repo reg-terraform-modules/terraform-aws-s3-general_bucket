@@ -32,7 +32,6 @@ variable "tags" {
 
 variable "cors_rules" {
   description = "Optional cors rules " 
-  type        = map(string)
   default = {
     "allowed_headers" = [""]
     "allowed_methods" = [""]
