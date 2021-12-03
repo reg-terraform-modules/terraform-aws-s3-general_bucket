@@ -7,6 +7,14 @@ resource "aws_s3_bucket" "this" {
   acl    = var.bucket_acl
   tags   = var.tags
 
+  cors_rule {
+    allowed_headers = var.cors_rules["allowed_headers"]
+    allowed_methods = var.cors_rules["allowed_methods"]
+    allowed_origins = var.cors_rules["allowed_origins"]
+    expose_headers  = var.cors_rules["expose_headers"]
+    max_age_seconds = var.cors_rules["max_age_seconds"]
+  }
+
   versioning {
     enabled = var.enable_versioning
   }

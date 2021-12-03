@@ -29,3 +29,15 @@ variable "tags" {
     "tag" = "none given"
   }
 }
+
+variable "cors_rules" {
+  description = "Optional cors rules " 
+  type        = map(string)
+  default = {
+    "allowed_headers" = [""]
+    "allowed_methods" = [""]
+    "allowed_origins" = [""]
+    "expose_headers"  = [""]
+    "max_age_seconds" = ""
+  }
+}
