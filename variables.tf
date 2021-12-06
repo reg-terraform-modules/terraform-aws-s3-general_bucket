@@ -42,6 +42,6 @@ variable "cors_rules" {
     "allowed_methods" = [""]
     "allowed_origins" = [""]
     "expose_headers"  = [""]
-    "max_age_seconds" = null
+    "max_age_seconds" = ""
   }
 }

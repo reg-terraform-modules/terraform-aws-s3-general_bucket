@@ -1,18 +1,19 @@
 output "arn" {
   description = "Bucket arn"
-  value       = var.include_cors ? aws_s3_bucket.with_cors[0].arn : aws_s3_bucket.without_cors[0].arn
+  value       = aws_s3_bucket.this.arn
 }
 
 output "name" {
   description = "Bucket name"
-  value       = var.include_cors ? aws_s3_bucket.with_cors[0].bucket : aws_s3_bucket.without_cors[0].bucket
+  value       = aws_s3_bucket.this.bucket
 }
 
 output "id" {
   description = "Bucket id"
-  value       = var.include_cors ? aws_s3_bucket.with_cors[0].id : aws_s3_bucket.without_cors[0].id
+  value       = aws_s3_bucket.this.id
 }
 
 output "bucket_domain_name" {
-  value = var.include_cors ? aws_s3_bucket.with_cors[0].bucket_domain_name : aws_s3_bucket.without_cors[0].bucket_domain_name
+  description = "Bucket domain name used by for instance cloudfront"
+  value       = aws_s3_bucket.this.bucket_domain_name
 }
