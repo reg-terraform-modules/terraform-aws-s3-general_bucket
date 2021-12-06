@@ -29,6 +29,12 @@ Generates general s3 buckets.
 - `enable_versioning`
     - Boolean for enabling bucket versioning - cannot be turned off once on
     - default: `false`
+- `include_cors`
+    - Boolean for including CORS policy on bucket
+    - default: `false`
+- `cors_rules`
+    - Definition of CORS rules - see variables file for syntax
+    - default: Dummy values
 
 
 ## Output variables
@@ -36,6 +42,10 @@ Generates general s3 buckets.
     - `arn` of the generated bucket
 - `name`
     - `name` of the generated bucket
+- `id`
+    - `id` of the generated bucket
+- `bucket_domain_name`
+    - Domain name of the generated bucket
 
 ## Example use
 The below example generates a bucket using default input where available.

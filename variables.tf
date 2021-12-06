@@ -30,6 +30,11 @@ variable "tags" {
   }
 }
 
+variable "include_cors" {
+  description = "Option to include cors for bucket"
+  default = false
+}
+
 variable "cors_rules" {
   description = "Optional cors rules " 
   default = {
@@ -37,6 +42,6 @@ variable "cors_rules" {
     "allowed_methods" = [""]
     "allowed_origins" = [""]
     "expose_headers"  = [""]
-    "max_age_seconds" = ""
+    "max_age_seconds" = null
   }
 }
