@@ -27,8 +27,8 @@ Generates general s3 buckets.
     - Canned acl to be used - see https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl for options
     - default: `"private"`
 - `enable_versioning`
-    - Boolean for enabling bucket versioning - cannot be turned off once on
-    - default: `false`
+    - Strin for enabling bucket versioning - cannot be turned off once on
+    - default: `Disabled` (Valid alternativ: `Enabled`)
 - `include_cors`
     - Boolean for including CORS policy on bucket
     - default: `false`

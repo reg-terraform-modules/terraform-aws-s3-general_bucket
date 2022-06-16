@@ -4,8 +4,16 @@ locals {
 
 resource "aws_s3_bucket" "this" {
   bucket = local.bucket_name
-  acl    = var.bucket_acl
   tags   = var.tags
+}
+
+resource "aws_s3_bucket_acl" "this" {
+  bucket = aws_s3_bucket.this.id
+  acl    = var.bucket_acl
+}
+
+resource "aws_s3_bucket_cors_configuration" "this"{
+  bucket = aws_s3_bucket.this.bucket
 
   dynamic "cors_rule" {
     for_each = var.include_cors == true ? toset([1]) : toset([])
@@ -17,10 +25,14 @@ resource "aws_s3_bucket" "this" {
         max_age_seconds = var.cors_rules["max_age_seconds"]
     }
   }
+}
 
-  versioning {
-    enabled = var.enable_versioning
+resource "aws_s3_bucket_versioning" "this" {
+  bucket = aws_s3_bucket.this.id
+  versioning_configuration {
+    status = var.enable_versioning
   }
+}
 
 /*  dynamic "server_side_encryption_configuration" {
     for_each = var.use_encryption ? [var.sse_algorithm] : []
@@ -33,4 +45,4 @@ resource "aws_s3_bucket" "this" {
     }
   }
 */
-}
+

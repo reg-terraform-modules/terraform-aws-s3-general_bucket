@@ -18,8 +18,8 @@ variable "bucket_acl" {
 
 variable "enable_versioning" {
   description = "Enable bucket versioning - cannot be turned off once on"
-  type        = bool
-  default     = false
+  type        = string
+  default     = "Disabled"
 }
 
 variable "tags" {
