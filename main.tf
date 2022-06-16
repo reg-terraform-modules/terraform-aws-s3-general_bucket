@@ -13,6 +13,7 @@ resource "aws_s3_bucket_acl" "this" {
 }
 
 resource "aws_s3_bucket_cors_configuration" "this"{
+  count = var.include_cors ? 1 : 0
   bucket = aws_s3_bucket.this.bucket
 
   dynamic "cors_rule" {
