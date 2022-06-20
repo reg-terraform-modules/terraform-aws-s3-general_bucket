@@ -13,19 +13,20 @@ resource "aws_s3_bucket_acl" "this" {
 }
 
 resource "aws_s3_bucket_cors_configuration" "this"{
-  count = var.include_cors ? 1 : 0
+  count = var.include_cors && var.cors_rules != null ? 1 : 0
+
   bucket = aws_s3_bucket.this.bucket
 
-  cors_rule {
+  dynamic "cors_rule" {
     for_each = var.cors_rules
-      content {
-          allowed_headers = var.cors_rules["allowed_headers"]
-          allowed_methods = var.cors_rules["allowed_methods"]
-         allowed_origins = var.cors_rules["allowed_origins"]
-         expose_headers  = var.cors_rules["expose_headers"]
-         max_age_seconds = var.cors_rules["max_age_seconds"]
-      }
+    content {
+      allowed_headers = var.cors_rules["allowed_headers"]
+      allowed_methods = var.cors_rules["allowed_methods"]
+      allowed_origins = var.cors_rules["allowed_origins"]
+      expose_headers  = var.cors_rules["expose_headers"]
+      max_age_seconds = var.cors_rules["max_age_seconds"]
     }
+  }
 }
 
 resource "aws_s3_bucket_versioning" "this" {
