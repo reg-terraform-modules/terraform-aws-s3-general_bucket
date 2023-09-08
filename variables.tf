@@ -10,11 +10,6 @@ variable "bucket_name" {
 }
 
 #Optional variables - default values used unless others specified:
-variable "bucket_acl" {
-  description = "Canned ACL - see https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl for options"
-  type        = string
-  default     = "private"
-}
 
 variable "enable_versioning" {
   description = "Enable bucket versioning - cannot be turned off once on"
